@@ -18,6 +18,17 @@ class Connection {
     }
   }
 
+  public function select(string $tableName, array $fields, int $limit = 0, int $offset = 0): array {
+    $field_names = implode(', ', $fields);
+    $limitStatement = $limit < 1 ? '' : "LIMIT {$limit}";
+    $offsetStatement = $offset < 1 ? '' : "OFFSET {$offset}";
+    $query = "SELECT {$field_names} FROM {$tableName} {$limitStatement} {$offsetStatement}";
+    $statement = $this->pdo->prepare($query);
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function insert(string $tableName, array $fields): int {
     $field_names = [];
     $parameters = [];

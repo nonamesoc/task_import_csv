@@ -35,4 +35,31 @@ class ProductStorage implements ProductStorageInterface {
     return $product;
   }
 
+  public function loadRawProducts(int $page = 0, int $limit = 200): array {
+    $products = $this->database->select('products', [
+      'code',
+      'name',
+      'level_1',
+      'level_2',
+      'level_3',
+      'price',
+      'price_sp',
+      'count',
+      'property_fields',
+      'joint_purchases',
+      'unit',
+      'image',
+      'show_frontpage',
+      'description',
+    ], $limit, $page * $limit);
+
+    return $products;
+  }
+
+  public function totalCount(): int {
+    $result = $this->database->select('products', ['COUNT(*) as count']);
+    $count = empty($result[0]['count']) ? 0 : $result[0]['count'];
+    return $count;
+  }
+
 }

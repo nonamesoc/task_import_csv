@@ -6,11 +6,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/services/ProductFactory.php';
 
 class Controller {
 
-    private ProductStorageInterface $productStorage;
+  private ProductStorageInterface $productStorage;
 
-    public function __construct(ProductStorageInterface $productStorage) {
-      $this->productStorage = $productStorage;
-    }
+  public function __construct(ProductStorageInterface $productStorage) {
+    $this->productStorage = $productStorage;
+  }
 
   public function formPage(): void {
     require 'views/form_page.php';
@@ -39,7 +39,16 @@ class Controller {
       fclose($fp);
     }
 
-    header('Location: /');
+    header('Location: /?redirection=success');
+  }
+
+  public function listPage(): void {
+    $page = $_GET['page'] ?? 0;
+    $itemsPerPage = 200;
+    $products = $this->productStorage->loadRawProducts($page, $itemsPerPage);
+    $totalCount = $this->productStorage->totalCount();
+    $lastPage = $totalCount / $itemsPerPage;
+    require 'views/list_page.php';
   }
 
 }
