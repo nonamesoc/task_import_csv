@@ -30,7 +30,7 @@ class Product implements ProductInterface {
 
   private string $image;
 
-  private string $showFrontPage;
+  private bool $showFrontPage;
 
   private string $description;
 
@@ -47,7 +47,7 @@ class Product implements ProductInterface {
     string $jointPurchases,
     string $unit,
     string $image,
-    string $showFrontPage,
+    bool $showFrontPage,
     string $description
   ) {
     $this->code = $code;
@@ -168,9 +168,9 @@ class Product implements ProductInterface {
   }
 
   /**
-   * @return string
+   * @return bool
    */
-  public function getShowFrontPage(): string {
+  public function getShowFrontPage(): bool {
     return $this->showFrontPage;
   }
 

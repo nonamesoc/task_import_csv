@@ -26,7 +26,7 @@ class ProductDTO {
 
   private string $image;
 
-  private string $showFrontPage;
+  private bool $showFrontPage;
 
   private string $description;
 
@@ -55,7 +55,7 @@ class ProductDTO {
 
    * @param string $image;
 
-   * @param string $showFrontPage;
+   * @param bool $showFrontPage;
 
    * @param string $description;
    */
@@ -72,7 +72,7 @@ class ProductDTO {
     string $jointPurchases,
     string $unit,
     string $image,
-    string $showFrontPage,
+    bool $showFrontPage,
     string $description
   ) {
     $this->code = $code;
@@ -202,9 +202,9 @@ class ProductDTO {
   }
 
   /**
-   * @return string
+   * @return bool
    */
-  public function getShowFrontPage(): string {
+  public function getShowFrontPage(): bool {
     return $this->showFrontPage;
   }
 

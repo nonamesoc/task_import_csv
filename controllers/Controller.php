@@ -44,7 +44,7 @@ class Controller {
 
   public function listPage(): void {
     $page = $_GET['page'] ?? 0;
-    $itemsPerPage = 200;
+    $itemsPerPage = 100;
     $products = $this->productStorage->loadRawProducts($page, $itemsPerPage);
     $totalCount = $this->productStorage->totalCount();
     $lastPage = $totalCount / $itemsPerPage;

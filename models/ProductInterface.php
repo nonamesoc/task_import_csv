@@ -30,7 +30,7 @@ interface ProductInterface {
 
   public function getImage(): string;
 
-  public function getShowFrontPage(): string;
+  public function getShowFrontPage(): bool;
 
   public function getDescription(): string;
 

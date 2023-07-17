@@ -25,7 +25,7 @@ class ProductStorage implements ProductStorageInterface {
       'joint_purchases' => $product->getJointPurchases(),
       'unit' => $product->getUnit(),
       'image' => $product->getImage(),
-      'show_frontpage' => $product->getShowFrontPage(),
+      'show_frontpage' => (int) $product->getShowFrontPage(),
       'description' => $product->getDescription(),
     ]);
     $product->setId($id);

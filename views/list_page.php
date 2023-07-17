@@ -19,7 +19,8 @@
         </div>
     </nav>
     <main>
-        <table class="table table-striped">
+        <table class="table table-striped caption-top">
+            <caption class="text-center"><?=$itemsPerPage;?> штук на страницу</caption>
             <thead>
                 <tr>
                     <th scope="col">Код</th>
